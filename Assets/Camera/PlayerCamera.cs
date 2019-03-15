@@ -4,38 +4,44 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
 
-    private static List<CameraBaseTrigger> insideTriggers = new List<CameraBaseTrigger>();
+    private float defaultSize; //how zoomed in the Camera should be when not inside a CameraZone
+    private static Camera cam; //the Camera component attached to the Camera GameObject
+    private static List<CameraZone> insideZones = new List<CameraZone>(); //List of all the CameraZones the player is currently inside
     private static GameObject player;
 
     private void Start()
     {
+        cam = gameObject.GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player");
+        defaultSize = cam.orthographicSize;
     }
 
-    public static void addTrigger(CameraBaseTrigger trigger) { insideTriggers.Add(trigger); }
-    public static  void removeTrigger(CameraBaseTrigger trigger) { insideTriggers.Remove(trigger); }
+    //Public-facing functions for interacting with insideZones
+    public static void addZone(CameraZone zone) { insideZones.Add( zone ); }
+    public static  void removeZone(CameraZone zone) { insideZones.Remove( zone ); }
 
-    //Return the weighted average location returned by all triggers
-    private Vector2 calculateCameraLocationFromTriggers()
+    //Returns the weighted average of location and size returned by all CameraZones.
+    private CameraSettings blendCameraZoneSettings()
     {
-        Vector3 locationSum = new Vector3(0, 0, 0);
-        foreach (CameraBaseTrigger trigger in insideTriggers)
-            locationSum += trigger.calculateResultingLocation(player);
-
-        return locationSum / insideTriggers.Count;
+        CameraSettings camSetSum = new CameraSettings();
+        foreach (CameraZone zone in insideZones)
+            camSetSum.addTo(zone.calculateResultingSettings(player));
+        return camSetSum.divBy( insideZones.Count );
     }
-	
-	// Update is called once per frame
-	void Update () {
-        //If player is not inside a trigger, camera should follow him/her/zer/zim/zoom/zibitty bob hey kids mmmmmm jell-o
-		if(insideTriggers.Count > 0)
+
+    // Update is called once per frame
+    void Update () {
+        //If player is not inside a zone, camera should follow him/her/zer/zim/zoom/zibitty bob hey kids mmmmmm jell-o
+		if(insideZones.Count > 0)
         {
-            Vector2 weightedPos = calculateCameraLocationFromTriggers();
-            transform.position = new Vector3( weightedPos.x, weightedPos.y, gameObject.transform.position.z );
+            CameraSettings blendedSettings = blendCameraZoneSettings();
+            transform.position = new Vector3(blendedSettings.x, blendedSettings.y, -1);
+            cam.orthographicSize = blendedSettings.size;
         }
         else
         {
             transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+            cam.orthographicSize = defaultSize;
         }
 	}
 }
