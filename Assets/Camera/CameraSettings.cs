@@ -38,4 +38,13 @@ public class CameraSettings {
     //Given a Camera, takes its 2D position and size and returns a CameraSettings object.
     public static CameraSettings extractSettings(Camera cam) { return new CameraSettings( cam.transform.position.x, cam.transform.position.y, cam.orthographicSize); }
 
+    //Blends the a List of CameraZones' settings and returns the composite
+    public static CameraSettings blendSettings(List<CameraZone> list, GameObject player)
+    {
+        CameraSettings camSetSum = new CameraSettings();
+        foreach ( CameraZone zone in list )
+            camSetSum.addTo( zone.calculateResultingSettings( player ) );
+        return camSetSum.divBy( list.Count );
+    }
+
 }

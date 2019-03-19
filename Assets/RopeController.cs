@@ -52,7 +52,7 @@ public class RopeController : MonoBehaviour {
         if (hit.collider != null)
         {
             dist = Mathf.Sqrt(Mathf.Pow(mousePosition.x - position.x, 2) + Mathf.Pow(mousePosition.y - position.y, 2));
-            dist *= 2.3f;
+            dist = 1 + dist * 2f;
             if (dist < 40) {
                 constraint.SetActive(true);
                 hookLoc = new Vector3(mousePosition.x, mousePosition.y, 0);

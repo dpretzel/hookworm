@@ -9,6 +9,7 @@ public class CameraTrigger : MonoBehaviour {
     private void Start()
     {
         zone = transform.parent.gameObject.GetComponent<CameraZone>();
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     //When the player enters this trigger, add this CameraZone to the PlayerCamera's list of zones.

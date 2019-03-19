@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class CameraZone : MonoBehaviour {
 
@@ -11,18 +12,13 @@ public class CameraZone : MonoBehaviour {
     private void Start()
     {
         frame = gameObject.GetComponentInChildren<Camera>();
+        playerFocus = Mathf.Clamp(playerFocus, 0, 1);
+        followSpeed = Mathf.Clamp(followSpeed, 0, 1);
     }
 
     //Calculates the camera location when the player is inside of this zone.
     //This is compounded with the results from all other zones the player is inside.
-    //The final camera location is done inside the PlayerCamera script attached to the actual camera.
-    public Vector3 calculateResultingLocation(GameObject player)
-    {
-        float newX = (player.transform.position.x * playerFocus) + (frame.transform.position.x * (1 - playerFocus));
-        float newY = (player.transform.position.y * playerFocus) + (frame.transform.position.y * (1 - playerFocus));
-        return new Vector3(newX, newY, -1);
-    }
-
+    //The final camera location calculation is done inside the PlayerCamera script attached to the actual camera.
     public CameraSettings calculateResultingSettings(GameObject player)
     {
         CameraSettings result = CameraSettings.extractSettings( frame );
