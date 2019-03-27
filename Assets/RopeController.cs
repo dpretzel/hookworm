@@ -6,10 +6,12 @@ public class RopeController : MonoBehaviour {
 
     public GameObject player;
 
+    public float maxLength = 20f;
+
     public GameObject constraintPrefab;
     private GameObject constraint;
     private float dist;
-    private Vector3 hookLoc;
+    private GameObject hookedGO;
 
     public LineRenderer lineRenderer;
 
@@ -30,8 +32,11 @@ public class RopeController : MonoBehaviour {
         {
             Release();
         }
-        lineRenderer.SetPosition(0, player.transform.position);
-        lineRenderer.SetPosition(1, hookLoc);
+
+        if(hookedGO){
+            lineRenderer.SetPosition(0, player.transform.position);
+            lineRenderer.SetPosition(1, hookedGO.transform.position);
+        }
     }
 
     /*private void FixedUpdate()
@@ -43,31 +48,34 @@ public class RopeController : MonoBehaviour {
     //and if it hits a collider it will create the rope with an anchor.
     void Fire()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 position = player.transform.position;
-        Vector3 direction = mousePosition - position;
+        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - position;
 
-        RaycastHit2D hit = Physics2D.Raycast(position, direction, Mathf.Infinity);
+        RaycastHit2D hit = Physics2D.Raycast(position, direction, maxLength, 1 << LayerMask.NameToLayer("Hook"));
 
         if (hit.collider != null)
         {
-            dist = Mathf.Sqrt(Mathf.Pow(mousePosition.x - position.x, 2) + Mathf.Pow(mousePosition.y - position.y, 2));
+            hookedGO = hit.collider.gameObject;
+            constraint.transform.parent = hookedGO.transform;
+
+            constraint.SetActive(true);
+            lineRenderer.enabled = true;
+
+            dist = Mathf.Sqrt(Mathf.Pow(hookedGO.transform.position.x - position.x, 2) + Mathf.Pow(hookedGO.transform.position.y - position.y, 2));
             dist = 1 + dist * 2f;
-            if (dist < 40) {
-                constraint.SetActive(true);
-                hookLoc = new Vector3(mousePosition.x, mousePosition.y, 0);
-                constraint.transform.position = hookLoc;
-                constraint.transform.localScale = new Vector3(dist, dist, 0);
-                lineRenderer.enabled = true;
-            }
+            constraint.transform.position = hookedGO.transform.position;
+            constraint.transform.localScale = new Vector3(dist / hookedGO.transform.localScale.x, dist / hookedGO.transform.localScale.y, 0); //adjust for hooked object's scale
         }
     }
 
     //Destroys the Rope
     void Release()
     {
-        //constraint.transform.position = new Vector3(-100, -100, 0);
-        constraint.SetActive(false);
-        lineRenderer.enabled = false;
+        if (hookedGO)
+        {
+            constraint.SetActive(false);
+            lineRenderer.enabled = false;
+            hookedGO = null;
+        }
     }
 }
