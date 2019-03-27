@@ -367,8 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b3263c6fe8c034da7ea2755e0a7009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  distance: 1
+  speed: 5
+  distance: 0.5
   movedir: rotate
   coldir: down
   groundDetection: {fileID: 1218901824}
@@ -1094,7 +1094,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.002577901, y: -0.007085681}
+  m_Offset: {x: -0.0002706051, y: 0.003416419}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1105,7 +1105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.077059, y: 1.2509282}
+  m_Size: {x: 1.071362, y: 1.229924}
   m_EdgeRadius: 0
 --- !u!212 &798832525
 SpriteRenderer:
@@ -1865,6 +1865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 65636682}
+  maxLength: 20
   constraintPrefab: {fileID: 1258588410672618, guid: a13ab1f480c02ad479cbe520c8a202da,
     type: 3}
   lineRenderer: {fileID: 1435624398}
@@ -2646,15 +2647,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8383325830550642797, guid: 85dfeb15bf0162e4494a6ea13163fd9a,
-        type: 3}
-      propertyPath: m_Mass
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8383325830550642792, guid: 85dfeb15bf0162e4494a6ea13163fd9a,
         type: 3}
       propertyPath: lift
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383325830550642797, guid: 85dfeb15bf0162e4494a6ea13163fd9a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85dfeb15bf0162e4494a6ea13163fd9a, type: 3}

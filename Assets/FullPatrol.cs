@@ -11,6 +11,8 @@ public class FullPatrol : MonoBehaviour
     public string coldir; //direction of the ray to detect for collision
 
     private bool movingInitialDir = true;
+    private bool movelef = true;
+    private bool movedown = false, moveright = false;
 
     public Transform groundDetection;
 
@@ -122,24 +124,37 @@ public class FullPatrol : MonoBehaviour
                 }
                 else if (!groundBoi.collider)
                 {
-                    if (sideBoi.collider || downright)
+                    if (sideBoi.collider || downright.collider)
                     {
                         transform.Translate(Vector2.down * speed * Time.deltaTime);
                     }
-                    else if(!sideBoi.collider && diagonalley || upBoi.collider)
+                    else if(!sideBoi.collider && diagonalley.collider || upBoi.collider)
                     {
                       transform.Translate(Vector2.right * speed * Time.deltaTime);
                     }
-                    else if(!upBoi.collider && upleft && !diagonalley)
+                    else if(!upBoi.collider && upleft.collider && !diagonalley.collider)
                     {
                         transform.Translate(Vector2.up * speed * Time.deltaTime);
                     }
-                    else if(!upleft && downleft)
+                    else if(!upleft.collider && downleft.collider)
                     {
                       transform.Translate(Vector2.left * speed * Time.deltaTime);
                     }
                 }
 
+        }
+        else if (movedir.Equals("experiment"))
+        {
+          RaycastHit2D groundBoi = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
+          RaycastHit2D sideBoi = Physics2D.Raycast(groundDetection.position, Vector2.right, distance);
+          RaycastHit2D upBoi = Physics2D.Raycast(groundDetection.position, Vector2.up, distance);
+          RaycastHit2D leftBoi = Physics2D.Raycast(groundDetection.position, Vector2.left, distance);
+
+          while(groundBoi.collider || downleft)
+          {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+          }
+          
         }
 
     }
