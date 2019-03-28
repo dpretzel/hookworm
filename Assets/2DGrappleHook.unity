@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1865,6 +1865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 65636682}
+  maxLength: 20
   constraintPrefab: {fileID: 1258588410672618, guid: a13ab1f480c02ad479cbe520c8a202da,
     type: 3}
   lineRenderer: {fileID: 1435624398}
@@ -2646,15 +2647,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8383325830550642797, guid: 85dfeb15bf0162e4494a6ea13163fd9a,
-        type: 3}
-      propertyPath: m_Mass
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8383325830550642792, guid: 85dfeb15bf0162e4494a6ea13163fd9a,
         type: 3}
       propertyPath: lift
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383325830550642797, guid: 85dfeb15bf0162e4494a6ea13163fd9a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85dfeb15bf0162e4494a6ea13163fd9a, type: 3}
