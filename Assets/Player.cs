@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RopeController : MonoBehaviour {
-
-    public GameObject player;
+public class Player : MonoBehaviour {
 
     public float maxLength = 20f;
 
@@ -15,40 +13,49 @@ public class RopeController : MonoBehaviour {
 
     public LineRenderer lineRenderer;
 
-    void Start()
+    void setupRope()
+    {
+        gameObject.GetComponent<LineRenderer>().positionCount = 2;
+    }
+
+    void setupConstraint()
     {
         constraint = Instantiate<GameObject>(constraintPrefab);
     }
 
+    void Start()
+    {
+        setupRope();
+        setupConstraint();
+    }
 
-    // Update is called once per frame
-    // Finds whether or not the left mouse button is pressed 
-    void Update () {
-        if (Input.GetMouseButtonDown(0))
+    void checkInput()
+    {
+        if (Input.GetButtonDown("Fire1"))
         {
             Fire();
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetButtonUp("Fire1"))
         {
             Release();
         }
+        //if(Input.GetButtonDown)
+    }
 
+    // Update is called once per frame
+    void Update () {
+
+        checkInput();
+        
         if(hookedGO){
-            lineRenderer.SetPosition(0, player.transform.position);
+            lineRenderer.SetPosition(0, gameObject.transform.position);
             lineRenderer.SetPosition(1, hookedGO.transform.position);
         }
     }
 
-    /*private void FixedUpdate()
-    {
-        
-    }*/
-    
-    //As the name suggests, this fires the rope in the direction of the mouse,
-    //and if it hits a collider it will create the rope with an anchor.
     void Fire()
     {
-        Vector3 position = player.transform.position;
+        Vector3 position = gameObject.transform.position;
         Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - position;
 
         RaycastHit2D hit = Physics2D.Raycast(position, direction, maxLength, 1 << LayerMask.NameToLayer("Hook"));
@@ -68,7 +75,6 @@ public class RopeController : MonoBehaviour {
         }
     }
 
-    //Destroys the Rope
     void Release()
     {
         if (hookedGO)

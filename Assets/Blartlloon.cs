@@ -12,6 +12,6 @@ public class Blartlloon : MonoBehaviour
     {
         if (randomColor) { color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)); }
         gameObject.GetComponent<SpriteRenderer>().color = color;
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = lift;
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = -lift;
     }
 }
