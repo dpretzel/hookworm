@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Rope
+  - HookZone
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - RopeConstraint
   - Player
   - Hook
-  - 
+  - HookZone
   - 
   - 
   - 

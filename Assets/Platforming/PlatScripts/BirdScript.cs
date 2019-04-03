@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BirdScript : MonoBehaviour
 {
-    public float lift = -1;
+    public float lift = 1;
 
     private void Start()
     {
