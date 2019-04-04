@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class FullPatrol : MonoBehaviour
 {
-
     public float speed; //speed of the boi
     public float distance; //distance of the ray detecting collision
     public string movedir; //initial direction of movement so far can either be "up" or "right"
     public string coldir; //direction of the ray to detect for collision
 
     private bool movingInitialDir = true;
-    private bool movelef = true;
-    private bool movedown = false, moveright = false;
+    private bool movelef = true, movedown = false, moveright = false, moveup = false;
 
     public Transform groundDetection;
+    public Vector2 snail = new Vector2(-1,0);
 
     Vector2 downlef;
     Vector2 uplef;
@@ -27,7 +26,7 @@ public class FullPatrol : MonoBehaviour
         downrig = new Vector2(1,-1);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (movedir.Equals("right"))
         {
@@ -145,16 +144,53 @@ public class FullPatrol : MonoBehaviour
         }
         else if (movedir.Equals("experiment"))
         {
-          RaycastHit2D groundBoi = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-          RaycastHit2D sideBoi = Physics2D.Raycast(groundDetection.position, Vector2.right, distance);
-          RaycastHit2D upBoi = Physics2D.Raycast(groundDetection.position, Vector2.up, distance);
-          RaycastHit2D leftBoi = Physics2D.Raycast(groundDetection.position, Vector2.left, distance);
-
-          while(groundBoi.collider || downleft)
+          LayerMask c = new LayerMask();
+          c = 1 << LayerMask.NameToLayer("SnailLayer");
+          RaycastHit2D groundBoi = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, c);
+          RaycastHit2D sideBoi = Physics2D.Raycast(groundDetection.position, Vector2.right, distance, c);
+          RaycastHit2D upBoi = Physics2D.Raycast(groundDetection.position, Vector2.up, distance, c);
+          RaycastHit2D leftBoi = Physics2D.Raycast(groundDetection.position, Vector2.left, distance, c);
+          transform.Translate(snail * speed * Time.deltaTime);
+          if(!groundBoi.collider && movingInitialDir)
           {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+              snail = new Vector2(0, -1);
+              for(int x = 0; x <= 2; x++)
+              {
+                transform.Translate(snail * speed * Time.deltaTime);
+              }
+              movingInitialDir = false;
+              movedown = true;
           }
-          
+          else if(movedown && !sideBoi.collider)
+          {
+            snail = new Vector2(1, 0);
+            for(int x = 0; x <= 2; x++)
+            {
+              transform.Translate(snail * speed * Time.deltaTime);
+            }
+            movedown = false;
+            moveright = true;
+          }
+          else if(moveright && !upBoi.collider)
+          {
+            snail = new Vector2(0, 1);
+            for(int x = 0; x <= 2; x++)
+            {
+              transform.Translate(snail * speed * Time.deltaTime);
+            }
+            moveright = false;
+            moveup = true;
+          }
+          else if(moveup && !leftBoi.collider)
+          {
+            snail = new Vector2(-1, 0);
+            for(int x = 0; x <= 2; x++)
+            {
+              transform.Translate(snail * speed * Time.deltaTime);
+            }
+            moveup = false;
+            movingInitialDir = true;
+          }
         }
 
     }
