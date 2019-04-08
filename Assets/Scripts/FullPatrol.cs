@@ -108,38 +108,40 @@ public class FullPatrol : MonoBehaviour
         }
         else if (movedir.Equals("rotate"))
         {
-                RaycastHit2D groundBoi = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-                RaycastHit2D sideBoi = Physics2D.Raycast(groundDetection.position, Vector2.right, distance);
-                RaycastHit2D upBoi = Physics2D.Raycast(groundDetection.position, Vector2.up, distance);
-                RaycastHit2D leftBoi = Physics2D.Raycast(groundDetection.position, Vector2.left, distance);
-                RaycastHit2D diagonalley = Physics2D.Raycast(groundDetection.position, Vector2.one, distance);
-                RaycastHit2D downleft = Physics2D.Raycast(groundDetection.position, downlef, distance);
-                RaycastHit2D upleft = Physics2D.Raycast(groundDetection.position, uplef, distance);
-                RaycastHit2D downright = Physics2D.Raycast(groundDetection.position, downrig, distance);
+            LayerMask c = new LayerMask();
+            c = 1 << LayerMask.NameToLayer("SnailLayer");
+            RaycastHit2D groundBoi = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, c);
+            RaycastHit2D sideBoi = Physics2D.Raycast(groundDetection.position, Vector2.right, distance, c);
+            RaycastHit2D upBoi = Physics2D.Raycast(groundDetection.position, Vector2.up, distance, c);
+            RaycastHit2D leftBoi = Physics2D.Raycast(groundDetection.position, Vector2.left, distance, c);
+            RaycastHit2D diagonalley = Physics2D.Raycast(groundDetection.position, Vector2.one, distance, c);
+            RaycastHit2D downleft = Physics2D.Raycast(groundDetection.position, downlef, distance, c);
+            RaycastHit2D upleft = Physics2D.Raycast(groundDetection.position, uplef, distance, c);
+            RaycastHit2D downright = Physics2D.Raycast(groundDetection.position, downrig, distance, c);
 
-                if(groundBoi.collider)
+            if (groundBoi.collider)
+            {
+                transform.Translate(Vector2.left * speed * Time.deltaTime);
+            }
+            else if (!groundBoi.collider)
+            {
+                if (sideBoi.collider || downright.collider)
+                {
+                    transform.Translate(Vector2.down * speed * Time.deltaTime);
+                }
+                else if (!sideBoi.collider && diagonalley.collider || upBoi.collider)
+                {
+                    transform.Translate(Vector2.right * speed * Time.deltaTime);
+                }
+                else if (!upBoi.collider && upleft.collider && !diagonalley.collider)
+                {
+                    transform.Translate(Vector2.up * speed * Time.deltaTime);
+                }
+                else if (!upleft.collider && downleft.collider)
                 {
                     transform.Translate(Vector2.left * speed * Time.deltaTime);
                 }
-                else if (!groundBoi.collider)
-                {
-                    if (sideBoi.collider || downright.collider)
-                    {
-                        transform.Translate(Vector2.down * speed * Time.deltaTime);
-                    }
-                    else if(!sideBoi.collider && diagonalley.collider || upBoi.collider)
-                    {
-                      transform.Translate(Vector2.right * speed * Time.deltaTime);
-                    }
-                    else if(!upBoi.collider && upleft.collider && !diagonalley.collider)
-                    {
-                        transform.Translate(Vector2.up * speed * Time.deltaTime);
-                    }
-                    else if(!upleft.collider && downleft.collider)
-                    {
-                      transform.Translate(Vector2.left * speed * Time.deltaTime);
-                    }
-                }
+            }   
 
         }
         else if (movedir.Equals("experiment"))

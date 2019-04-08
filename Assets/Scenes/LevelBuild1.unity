@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 175077033}
   - component: {fileID: 175077032}
   - component: {fileID: 175077034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Snail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b3263c6fe8c034da7ea2755e0a7009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   distance: 1
   movedir: rotate
   coldir: down
@@ -1044,6 +1044,7 @@ GameObject:
   - component: {fileID: 265001427}
   - component: {fileID: 265001426}
   - component: {fileID: 265001429}
+  - component: {fileID: 265001430}
   m_Layer: 11
   m_Name: Snail (1)
   m_TagString: Untagged
@@ -1125,7 +1126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265001425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.2, y: 14.1, z: 0}
+  m_LocalPosition: {x: 36.2, y: 14.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1832630406}
@@ -1158,6 +1159,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &265001430
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265001425}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &421895178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,7 +2965,7 @@ GameObject:
   - component: {fileID: 798832526}
   - component: {fileID: 798832525}
   - component: {fileID: 798832524}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1072,7 +1072,7 @@ GameObject:
   - component: {fileID: 175077033}
   - component: {fileID: 175077032}
   - component: {fileID: 175077034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Snail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1154,11 +1154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b3263c6fe8c034da7ea2755e0a7009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   distance: 1
-  movedir: rotate
+  movedir: experiment
   coldir: down
   groundDetection: {fileID: 1218901824}
+  snail: {x: -1, y: 0}
 --- !u!1 &204916961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1363,7 @@ GameObject:
   - component: {fileID: 265001428}
   - component: {fileID: 265001427}
   - component: {fileID: 265001426}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Snail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1381,11 +1382,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b3263c6fe8c034da7ea2755e0a7009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   distance: 1
   movedir: rotate
   coldir: down
   groundDetection: {fileID: 1832630406}
+  snail: {x: -1, y: 0}
 --- !u!212 &265001427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3068,7 +3070,7 @@ GameObject:
   - component: {fileID: 676162847}
   - component: {fileID: 676162846}
   - component: {fileID: 676162845}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3621,7 +3623,7 @@ GameObject:
   - component: {fileID: 798832526}
   - component: {fileID: 798832525}
   - component: {fileID: 798832524}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6129,11 +6131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e1c15e42647614ab40b63c6ea3cb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 65636682}
-  maxLength: 20
-  constraintPrefab: {fileID: 1258588410672618, guid: a13ab1f480c02ad479cbe520c8a202da,
-    type: 3}
-  lineRenderer: {fileID: 1435624398}
 --- !u!4 &1435624400
 Transform:
   m_ObjectHideFlags: 0
@@ -7479,7 +7476,7 @@ SpriteRenderer:
   m_Size: {x: 9.62, y: 6.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1791183988
