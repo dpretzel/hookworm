@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Rope
+  - HookZone
+  - RowClone
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - RopeConstraint
+  - Player
+  - Hook
+  - HookZone
+  - SnailLayer
+  - DangerLayer
+  - Parry
+  - HookScout
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Yellow
+  - Red
+  - Blue
+  - Green
+  - BackgroundScenary
+  - Background
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 86735181
+    locked: 0
+  - name: Scenary
+    uniqueID: 2135173613
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
