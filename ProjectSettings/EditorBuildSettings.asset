@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WindyTunnel.unity
     guid: 8cdb5b700e3ff20488733ad182ea7619
+  - enabled: 1
+    path: Assets/Scenes/UFOCatcher.unity
+    guid: 5799bc2ac8b0a624996ad85a39e3c781
   m_configObjects: {}

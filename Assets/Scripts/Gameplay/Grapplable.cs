@@ -61,13 +61,13 @@ public class Grapplable : MonoBehaviour
 
     public void Highlight()
     {
-        transform.GetComponent<SpriteRenderer>().color = highlightColor;
+        //transform.GetComponent<SpriteRenderer>().color = highlightColor;
         //print("highlighted!");
     }
 
     public void Dehighlight()
     {
-        transform.GetComponent<SpriteRenderer>().color = Color.white;
+        //transform.GetComponent<SpriteRenderer>().color = Color.white;
         //print("dehighlighted!");
     }
 }

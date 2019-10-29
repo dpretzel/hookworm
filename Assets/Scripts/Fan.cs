@@ -28,17 +28,17 @@ public class Fan : MonoBehaviour
 
             //current
             current.GetComponent<AreaEffector2D>().forceMagnitude = strengthScale; //strength
-            current.localScale = new Vector3(rangeScale, widthScale, 1); //scale
+            current.localScale = new Vector3(rangeScale * 100, widthScale * 10, 1); //scale
             current.localPosition = new Vector3(rangeScale / 2, 0, 0); //pos
 
             //particles
             particles.startSpeed = strengthScale; //velocity
             particles.startLifetime = rangeScale / strengthScale; //lifetime
-            particles.transform.localScale = new Vector3(1, 1, 1); //scale (locked)
+            particles.transform.localScale = new Vector3(.01f, .01f, .01f); //scale (locked)
             particles.transform.position = gameObject.transform.position; //pos (locked)
 
             //casing
-            fanCasing.localScale = new Vector3(3, widthScale, 1); //scale
+            fanCasing.localScale = new Vector3(300, widthScale * 10, 1); //scale
             fanCasing.localPosition = new Vector3(0, 0, 0); //pos (locked)
         }
     }
