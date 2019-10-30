@@ -26,6 +26,7 @@ public class HUDManager : MonoBehaviour
     {
         Countdown.instance.onTick += updateCountdownHUD;
         Countdown.instance.onCountdownReached += hideCountdownHUD;
+        GameplayManager.instance.onDeath += showDeathHUD;
     }
 
     private void updateCountdownHUD(float timeLeft)
@@ -38,6 +39,11 @@ public class HUDManager : MonoBehaviour
         countdownHUD.text = "GO!!!";
         Destroy(countdownHUD, .5f);
         countdownFinished = true;
+    }
+
+    private void showDeathHUD()
+    {
+        hud.transform.Find("DeathText").GetComponent<Text>().enabled = true;
     }
 
     //create a new hud everytime the level reloads
