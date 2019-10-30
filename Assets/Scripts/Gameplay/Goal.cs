@@ -18,7 +18,7 @@ public class Goal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // call for any listeners
-        if (!alreadyReached)
+        if (collision.tag == "Player" && ! alreadyReached)
         {
             if (onGoalReached != null)
                 onGoalReached();

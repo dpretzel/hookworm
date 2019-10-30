@@ -40,6 +40,9 @@ public class FocuserEditor : Editor
 
         Handles.DrawCamera(previewRect, cam);
         EditorGUIUtility.AddCursorRect(previewRect, MouseCursor.Pan);
+
+        Undo.RecordObject(focuser, "Modified Focuser settings");
+
         //Handles.ArrowHandleCap(0, cam.transform.position, cam.transform.rotation, 3, EventType.Repaint);
 
         //EditorGUIUtility.GUIToScreenPoint

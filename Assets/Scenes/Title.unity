@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FocusZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1354971906984252741, guid: 73488286d0d7e4345a860c19524967dd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1354971906984252737, guid: 73488286d0d7e4345a860c19524967dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -256,7 +261,22 @@ PrefabInstance:
     - target: {fileID: 1354971906984252737, guid: 73488286d0d7e4345a860c19524967dd,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3198.9097
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354971906984252736, guid: 73488286d0d7e4345a860c19524967dd,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354971906984252738, guid: 73488286d0d7e4345a860c19524967dd,
+        type: 3}
+      propertyPath: zoom
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354971906984252738, guid: 73488286d0d7e4345a860c19524967dd,
+        type: 3}
+      propertyPath: playerFocus
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73488286d0d7e4345a860c19524967dd, type: 3}
@@ -699,7 +719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528396454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19, y: 9, z: 0}
+  m_LocalPosition: {x: -22, y: 9, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -898,12 +918,32 @@ PrefabInstance:
     - target: {fileID: 588466446301204199, guid: 19393f56e8f87b944aa00ea2b8d4f216,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1390254574685580367, guid: 19393f56e8f87b944aa00ea2b8d4f216,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -57
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616020725883584269, guid: 19393f56e8f87b944aa00ea2b8d4f216,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616020725883584269, guid: 19393f56e8f87b944aa00ea2b8d4f216,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368535134667068422, guid: 19393f56e8f87b944aa00ea2b8d4f216,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368535134667068422, guid: 19393f56e8f87b944aa00ea2b8d4f216,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8240210933058787481, guid: 19393f56e8f87b944aa00ea2b8d4f216,
         type: 3}
@@ -925,25 +965,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3616020725883584269, guid: 19393f56e8f87b944aa00ea2b8d4f216,
+    - target: {fileID: 5611929920754710659, guid: 19393f56e8f87b944aa00ea2b8d4f216,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616020725883584269, guid: 19393f56e8f87b944aa00ea2b8d4f216,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 2368535134667068422, guid: 19393f56e8f87b944aa00ea2b8d4f216,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2368535134667068422, guid: 19393f56e8f87b944aa00ea2b8d4f216,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+      propertyPath: orthographic size
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2368535134667068419, guid: 19393f56e8f87b944aa00ea2b8d4f216,
         type: 3}
