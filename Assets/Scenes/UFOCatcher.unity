@@ -206,13 +206,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1354971906984252738, guid: 73488286d0d7e4345a860c19524967dd,
         type: 3}
-      propertyPath: zoom
-      value: 15
-      objectReference: {fileID: 0}
+      propertyPath: attachedTo
+      value: 
+      objectReference: {fileID: 1503717847}
     - target: {fileID: 1354971906984252738, guid: 73488286d0d7e4345a860c19524967dd,
         type: 3}
       propertyPath: playerFocus
-      value: 0.1
+      value: 0.636
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354971906984252738, guid: 73488286d0d7e4345a860c19524967dd,
+        type: 3}
+      propertyPath: snappiness
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354971906984252738, guid: 73488286d0d7e4345a860c19524967dd,
+        type: 3}
+      propertyPath: zoom
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73488286d0d7e4345a860c19524967dd, type: 3}

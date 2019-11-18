@@ -7,6 +7,8 @@ using UnityEngine;
 [System.Serializable]
 public class Focuser : MonoBehaviour
 {
+    [SerializeField]
+    public Transform attachedTo; // the Transform this zone should be attached to
     public float zoom = 30; // how zoomed in the camera should be
     public float playerFocus = .5f; //how much the camera follows the player (higher = follow player, lower = stationary)
     public float snappiness = .5f; //how snappy the camera is
@@ -16,8 +18,12 @@ public class Focuser : MonoBehaviour
      * The final camera location calculation is done inside the FocusManager script attached to the Managers GO in the "RequiredElements" prefab.*/
     public Vector3 CalculateResultingPosition()
     {
-        Vector3 result = new Vector3();
-        Vector3 playerPos = PlayerManager.instance.getPlayer().transform.position;
+        return CalculateResultingPosition(PlayerManager.instance.getPlayer().transform.position);
+    }
+
+    public Vector3 CalculateResultingPosition(Vector3 playerPos)
+    {
+        Vector3 result = attachedTo == null? new Vector3(0,0,0) : attachedTo.position;
 
         result.x = (playerPos.x * playerFocus) + (result.x * (1 - playerFocus));
         result.y = (playerPos.y * playerFocus) + (result.y * (1 - playerFocus));

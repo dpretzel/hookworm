@@ -3,7 +3,15 @@ guid: 0da8a1e2be91abe4bba4f003296d51f0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - previewPlayerPrefab: {fileID: 8275633195144955091, guid: 49ffc660f55c7ee4080e82a3417763e3,
+      type: 3}
+  - previewPlayerSprite: {fileID: 21300000, guid: d287c2de9e70d714293c26df492a6cf3,
+      type: 3}
+  - focuser: {instanceID: 0}
+  - camGO: {instanceID: 0}
+  - previewCam: {instanceID: 0}
+  - previewPlayer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
